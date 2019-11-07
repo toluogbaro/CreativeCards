@@ -55,6 +55,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
      <Compile Include="Assets\Scripts\ClickRegister.cs" />
+     <Compile Include="Assets\Scripts\EventRandomizer.cs" />
      <Compile Include="Assets\Scripts\HighlightController.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/TP229736/OneDrive - Falmouth University/CreativeCards/Creative Cards Project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

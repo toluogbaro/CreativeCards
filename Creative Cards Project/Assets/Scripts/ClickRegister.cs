@@ -33,6 +33,7 @@ public class ClickRegister : MonoBehaviour
                 {
                     Debug.Log("Hit" + hit.collider.gameObject);
                     hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.black;
+                    GetComponent<EventRandomizer>().RandomEvent();
                 }
             }
         }
