@@ -8,6 +8,7 @@ public class ClickRegister : MonoBehaviour
 
     public GameObject Light;
     public Vector3 LightHeight;
+    public Material Tainted;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +33,7 @@ public class ClickRegister : MonoBehaviour
                 if (hit.collider.gameObject.tag == "Hex")
                 {
                     Debug.Log("Hit" + hit.collider.gameObject);
-                    hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.black;
+                    hit.collider.gameObject.GetComponent<Renderer>().material = Tainted;
                     GetComponent<EventRandomizer>().RandomEvent();
                 }
             }
