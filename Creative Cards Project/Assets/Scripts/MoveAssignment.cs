@@ -13,7 +13,7 @@ public class MoveAssignment : MonoBehaviour
 
     int MoveNum;
 
-
+    public GameObject FightManager;
 
     public void Awake() 
     {
@@ -29,12 +29,19 @@ public class MoveAssignment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-          
+        if (Input.GetKeyDown(KeyCode.Alpha1)) 
+        {
+            Debug.Log("AddMove");
+            MoveNum = 1;
+            AddMove();
+        }
     }
 
     void Glutony() 
     {
-        Debug.Log("Glutnoy Move");
+        Debug.Log("Gluttony Attack");
+        FightManager.GetComponent<FightManager>().EnemyHealth -= 20;
+        FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
     }
     void Lust() 
     {

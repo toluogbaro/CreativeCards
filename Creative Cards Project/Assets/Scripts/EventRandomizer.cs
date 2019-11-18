@@ -17,6 +17,8 @@ public class EventRandomizer : MonoBehaviour
 
     public Canvas EncounterCan;
 
+    public GameObject GameManagerOBJ;
+    public Canvas TopDownCan;
     #endregion
     
     
@@ -41,8 +43,10 @@ public class EventRandomizer : MonoBehaviour
             TopDownCamera.SetActive(true);
             EncounterCamera.SetActive(false);
             EncounterCan.enabled = false;
+            TopDownCan.enabled = true;
             CountdownOn = false;
             Countdown = TimeInEncounter;
+            GameManagerOBJ.GetComponent<GameManager>().CountdownEnabled = true;
         }
 
         if (CountdownOn == true) 
@@ -59,13 +63,30 @@ public class EventRandomizer : MonoBehaviour
         
         if (Random.value <= PercentageChance)
         {
+            GameManagerOBJ.GetComponent<GameManager>().CountdownEnabled = false;
             Debug.Log("Encounter");
             GetComponent<ClickRegister>().enabled = !GetComponent<ClickRegister>();
             GetComponent<CameraMovement>().enabled = !GetComponent<CameraMovement>();
             TopDownCamera.SetActive(false);
             EncounterCamera.SetActive(true);
             EncounterCan.enabled = true;
+            TopDownCan.enabled = false;
             CountdownOn = true;
+            
         }
+    }
+
+    public void EndEvent() 
+    {
+        Debug.Log("Encounter End");
+        GetComponent<ClickRegister>().enabled = GetComponent<ClickRegister>();
+        GetComponent<CameraMovement>().enabled = GetComponent<CameraMovement>();
+        TopDownCamera.SetActive(true);
+        EncounterCamera.SetActive(false);
+        EncounterCan.enabled = false;
+        TopDownCan.enabled = true;
+        CountdownOn = false;
+        Countdown = TimeInEncounter;
+        GameManagerOBJ.GetComponent<GameManager>().CountdownEnabled = true;
     }
 }
