@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public float DaytimeTimer;
@@ -13,12 +13,17 @@ public class GameManager : MonoBehaviour
     public int StartingDemons;
 
     public int DaysPassed;
+
+    public Canvas GameOverCan;
+    public Canvas WinCan;
     // Start is called before the first frame update
     void Start()
     {
         DaytimeTimer = DaytimeLength;
         CountdownEnabled = true;
         Demons = StartingDemons;
+        GameOverCan.enabled = false;
+        WinCan.enabled = false;
     }
 
     // Update is called once per frame
@@ -34,6 +39,17 @@ public class GameManager : MonoBehaviour
         {
             DayEnd();
         }
+
+        if (Demons <= 0) 
+        {
+            GameOverCan.enabled = true;
+        }
+
+        if (TilesTurned == 72) 
+        {
+            WinCan.enabled = true;
+        }
+
     }
 
     void DaytimeCountdown() 

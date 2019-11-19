@@ -9,25 +9,27 @@ public class EventRandomizer : MonoBehaviour
     public float PercentageChance;
     public GameObject TopDownCamera;
     public GameObject EncounterCamera;
-
-
+    public GameObject StandardEnemy;
+    Vector3 EnemySpawnLocation;
     float Countdown;
     bool CountdownOn;
     public float TimeInEncounter;
-
+    public GameObject Enemy;
     public Canvas EncounterCan;
 
     public GameObject GameManagerOBJ;
     public Canvas TopDownCan;
+    public GameObject HealthSliderOBJ;
     #endregion
-    
-    
+
+
     // Start is called before the first frame update
     public void Start()
     {
         CountdownOn = false;
         Countdown = TimeInEncounter;
         EncounterCan.enabled = false;
+        EnemySpawnLocation = new Vector3(-43.36f, -14.775f, 1.87f);
     }
 
     // Update is called once per frame
@@ -63,22 +65,21 @@ public class EventRandomizer : MonoBehaviour
         
         if (Random.value <= PercentageChance)
         {
+            Enemy = Instantiate(StandardEnemy, EnemySpawnLocation, Quaternion.identity);
+            HealthSliderOBJ.GetComponent<EnemyHealthSlider>().NewEnemy = true;
             GameManagerOBJ.GetComponent<GameManager>().CountdownEnabled = false;
-            Debug.Log("Encounter");
             GetComponent<ClickRegister>().enabled = !GetComponent<ClickRegister>();
             GetComponent<CameraMovement>().enabled = !GetComponent<CameraMovement>();
             TopDownCamera.SetActive(false);
             EncounterCamera.SetActive(true);
             EncounterCan.enabled = true;
             TopDownCan.enabled = false;
-            CountdownOn = true;
-            
+            CountdownOn = true;     
         }
     }
 
     public void EndEvent() 
     {
-        Debug.Log("Encounter End");
         GetComponent<ClickRegister>().enabled = GetComponent<ClickRegister>();
         GetComponent<CameraMovement>().enabled = GetComponent<CameraMovement>();
         TopDownCamera.SetActive(true);
@@ -88,5 +89,6 @@ public class EventRandomizer : MonoBehaviour
         CountdownOn = false;
         Countdown = TimeInEncounter;
         GameManagerOBJ.GetComponent<GameManager>().CountdownEnabled = true;
+        Destroy(Enemy);
     }
 }

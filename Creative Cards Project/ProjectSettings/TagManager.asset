@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Hex
+  - FM
+  - Glutony
+  - Lust
+  - Sloth
+  - Anger
+  - Greed
+  - Envy
+  - Pride
+  - GM
   layers:
   - Default
   - TransparentFX

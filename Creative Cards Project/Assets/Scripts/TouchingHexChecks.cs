@@ -17,9 +17,7 @@ public class TouchingHexChecks : MonoBehaviour
     }
 
     public void OnTriggerEnter(Collider col) 
-    {
-        Debug.Log("Collider Activeted and Hit other hex");
-        
+    {        
         if (col.gameObject.tag == "Hex") 
         {
             col.gameObject.GetComponent<HexIsTouched>().IsHexTouched = true;

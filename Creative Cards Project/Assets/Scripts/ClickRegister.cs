@@ -13,6 +13,7 @@ public class ClickRegister : MonoBehaviour
     public GameObject GameManagerOBJ;
     public int DemonsUsedToTakeTile;
     public bool FirstHit;
+    public GameObject EncounterPanelOBJ;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,9 @@ public class ClickRegister : MonoBehaviour
     public void Update()
     {
         RayCastShoot();
+
+
+        DemonsUsedToTakeTile = GameManagerOBJ.GetComponent<GameManager>().TilesTurned * 5;
     }
 
     public void RayCastShoot() 
@@ -37,16 +41,7 @@ public class ClickRegister : MonoBehaviour
                 {
                     if (hit.collider.gameObject.tag == "Hex")
                     {
-                        if (FirstHit == true)
-                        {  
-                            hit.collider.gameObject.GetComponent<HexIsTouched>().IsTainted = true;
-                            hit.collider.gameObject.GetComponent<Renderer>().material = Tainted;
-                            GameManagerOBJ.GetComponent<GameManager>().TilesTurned += 1;
-                            GameManagerOBJ.GetComponent<GameManager>().Demons -= DemonsUsedToTakeTile;
-                            FirstHit = false;
-                        }
-                        
-                        else if (hit.collider.gameObject.GetComponent<HexIsTouched>().IsHexTouched == true)
+                        if (hit.collider.gameObject.GetComponent<HexIsTouched>().IsHexTouched == true)
                         {
                             hit.collider.gameObject.GetComponent<HexIsTouched>().IsTainted = true;
                             hit.collider.gameObject.GetComponent<Renderer>().material = Tainted;
@@ -55,6 +50,50 @@ public class ClickRegister : MonoBehaviour
                             GetComponent<EventRandomizer>().RandomEvent();
                         }
                     }
+                    #region SinHexs
+                    if (hit.collider.gameObject.tag == "Glutony") 
+                    {
+                        hit.collider.gameObject.GetComponent<GlutonyMoveAdd>().AddGlutonyAttack();
+                        hit.collider.gameObject.GetComponent<HexIsTouched>().IsTainted = true;
+                        hit.collider.gameObject.GetComponent<Renderer>().material = Tainted;
+                    }
+                    if (hit.collider.gameObject.tag == "Lust")
+                    {
+                        hit.collider.gameObject.GetComponent<LustMoveAdd>().AddLustAttack();
+                        hit.collider.gameObject.GetComponent<HexIsTouched>().IsTainted = true;
+                        hit.collider.gameObject.GetComponent<Renderer>().material = Tainted;
+                    }
+                    if (hit.collider.gameObject.tag == "Sloth")
+                    {
+                        hit.collider.gameObject.GetComponent<SlothMoveAdd>().AddSlothAttack();
+                        hit.collider.gameObject.GetComponent<HexIsTouched>().IsTainted = true;
+                        hit.collider.gameObject.GetComponent<Renderer>().material = Tainted;
+                    }
+                    if (hit.collider.gameObject.tag == "Pride")
+                    {
+                        hit.collider.gameObject.GetComponent<PrideMoveAdd>().AddPrideAttack();
+                        hit.collider.gameObject.GetComponent<HexIsTouched>().IsTainted = true;
+                        hit.collider.gameObject.GetComponent<Renderer>().material = Tainted;
+                    }
+                    if (hit.collider.gameObject.tag == "Envy")
+                    {
+                        hit.collider.gameObject.GetComponent<EnvyMoveAdd>().AddEnvyAttack();
+                        hit.collider.gameObject.GetComponent<HexIsTouched>().IsTainted = true;
+                        hit.collider.gameObject.GetComponent<Renderer>().material = Tainted;
+                    }
+                    if (hit.collider.gameObject.tag == "Anger")
+                    {
+                        hit.collider.gameObject.GetComponent<AngerMoveAdd>().AddAngerAttack();
+                        hit.collider.gameObject.GetComponent<HexIsTouched>().IsTainted = true;
+                        hit.collider.gameObject.GetComponent<Renderer>().material = Tainted;
+                    }
+                    if (hit.collider.gameObject.tag == "Greed")
+                    {
+                        hit.collider.gameObject.GetComponent<GreedMoveAdd>().AddGreedAttack();
+                        hit.collider.gameObject.GetComponent<HexIsTouched>().IsTainted = true;
+                        hit.collider.gameObject.GetComponent<Renderer>().material = Tainted;
+                    }
+                    #endregion
                 }
             }
         }
@@ -63,15 +102,14 @@ public class ClickRegister : MonoBehaviour
         {
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 20))
             {
-                if (hit.collider.gameObject.tag == "Hex")
+                if (hit.collider.gameObject.tag == "Hex" || hit.collider.gameObject.tag == "Glutony" || hit.collider.gameObject.tag == "Lust" || hit.collider.gameObject.tag == "Sloth" || hit.collider.gameObject.tag == "Pride" || hit.collider.gameObject.tag == "Envy" || hit.collider.gameObject.tag == "Anger" || hit.collider.gameObject.tag == "Greed")
                 {
-                    if (FirstHit == true)
+                    if (hit.collider.gameObject.tag == "Glutony" || hit.collider.gameObject.tag == "Lust" || hit.collider.gameObject.tag == "Sloth" || hit.collider.gameObject.tag == "Pride" || hit.collider.gameObject.tag == "Envy" || hit.collider.gameObject.tag == "Anger" || hit.collider.gameObject.tag == "Greed") 
                     {
                         GameObject HitObject = hit.collider.gameObject;
                         HitObject.GetComponentInChildren<HighlightController>().HighlightCountdown = 0.5f;
                     }
-
-                    else if (hit.collider.gameObject.GetComponent<HexIsTouched>().IsHexTouched == true) 
+                    if (hit.collider.gameObject.GetComponent<HexIsTouched>().IsHexTouched == true) 
                     {
                         GameObject HitObject = hit.collider.gameObject;
                         HitObject.GetComponentInChildren<HighlightController>().HighlightCountdown = 0.5f;
