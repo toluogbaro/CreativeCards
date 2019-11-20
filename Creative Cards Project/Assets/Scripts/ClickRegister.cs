@@ -26,7 +26,7 @@ public class ClickRegister : MonoBehaviour
         RayCastShoot();
 
 
-        DemonsUsedToTakeTile = GameManagerOBJ.GetComponent<GameManager>().TilesTurned * 5;
+        DemonsUsedToTakeTile = 10 + (GameManagerOBJ.GetComponent<GameManager>().TilesTurned * 2);
     }
 
     public void RayCastShoot() 

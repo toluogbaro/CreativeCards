@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
             GameOverCan.enabled = true;
         }
 
-        if (TilesTurned == 72) 
+        if (TilesTurned == 64) 
         {
             WinCan.enabled = true;
         }

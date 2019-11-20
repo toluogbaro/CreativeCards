@@ -17,18 +17,21 @@ public class FightManager : MonoBehaviour
 
     public GameObject CamRig;
 
+    bool IsCoRunning;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        IsPlayersTurn = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (IsPlayersTurn == false) 
+        if (IsPlayersTurn == false && IsCoRunning == false) 
         {
-            EnemyTurn();
+            StartCoroutine(WaitTillAttack());
+            IsCoRunning = true;
         }
 
         // If Enemy Health is 0 or less, return to top down view
@@ -39,26 +42,38 @@ public class FightManager : MonoBehaviour
     }
 
 
+    IEnumerator WaitTillAttack() 
+    {
+        yield return new WaitForSeconds(2);
+        EnemyTurn();
+    }
+    
+    
     void EnemyTurn() 
     {
+        StopCoroutine(WaitTillAttack());
+        ;
         Move = Random.value;
         
         if (Move <= 0.6f) 
         {
             GameManagerOBJ.GetComponent<GameManager>().Demons -= Move1Damage;
             IsPlayersTurn = true;
+            IsCoRunning = false;
         }
 
         if (Move > 0.6f && Move <= 0.9f)
         {
             GameManagerOBJ.GetComponent<GameManager>().Demons -= Move2Damage;
             IsPlayersTurn = true;
+            IsCoRunning = false;
         }
 
         if (Move > 0.9f)
         {
             GameManagerOBJ.GetComponent<GameManager>().Demons -= Move3Damage;
             IsPlayersTurn = true;
+            IsCoRunning = false;
         }
     }
 }

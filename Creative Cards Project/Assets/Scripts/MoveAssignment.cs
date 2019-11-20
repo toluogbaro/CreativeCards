@@ -43,115 +43,136 @@ public class MoveAssignment : MonoBehaviour
 
     void Glutony() 
     {
-        Debug.Log("Gluttony Attack");
-        crit = Random.value;
+        if (FightManager.GetComponent<FightManager>().IsPlayersTurn == true)
+        {
+            Debug.Log("Gluttony Attack");
+            crit = Random.value;
 
-        if (crit <= critChance)
-        {
-            FightManager.GetComponent<FightManager>().EnemyHealth -= 30 * GameManagerOBJ.GetComponent<GameManager>().Demons;
-            FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
-        }
-        else
-        {
-            FightManager.GetComponent<FightManager>().EnemyHealth -= 20 * GameManagerOBJ.GetComponent<GameManager>().Demons;
-            FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
+            if (crit <= critChance)
+            {
+                FightManager.GetComponent<FightManager>().EnemyHealth -= 30 + Random.Range(10, (GameManagerOBJ.GetComponent<GameManager>().Demons / 4));
+                FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
+            }
+            else
+            {
+                FightManager.GetComponent<FightManager>().EnemyHealth -= 20 * Random.Range(10, (GameManagerOBJ.GetComponent<GameManager>().Demons / 4));
+                FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
+            }
         }
     }
     void Lust() 
     {
-        Debug.Log("Lust Move");
-
-        crit = Random.value;
-
-        if (crit <= critChance)
+        if (FightManager.GetComponent<FightManager>().IsPlayersTurn == true)
         {
-            FightManager.GetComponent<FightManager>().EnemyHealth -= 30 * GameManagerOBJ.GetComponent<GameManager>().Demons;
-            FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
-        }
-        else 
-        {
-            FightManager.GetComponent<FightManager>().EnemyHealth -= 20 * GameManagerOBJ.GetComponent<GameManager>().Demons;
-            FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
+            Debug.Log("Lust Move");
+
+            crit = Random.value;
+
+            if (crit <= critChance)
+            {
+                FightManager.GetComponent<FightManager>().EnemyHealth -= 30 * Random.Range(10, (GameManagerOBJ.GetComponent<GameManager>().Demons / 4));
+                FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
+            }
+            else
+            {
+                FightManager.GetComponent<FightManager>().EnemyHealth -= 20 * Random.Range(10, (GameManagerOBJ.GetComponent<GameManager>().Demons / 4));
+                FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
+            }
         }
     }
     void Sloth() 
     {
-        Debug.Log("Sloth Move");
-        crit = Random.value;
+        if (FightManager.GetComponent<FightManager>().IsPlayersTurn == true)
+        {
+            Debug.Log("Sloth Move");
+            crit = Random.value;
 
-        if (crit <= critChance)
-        {
-            FightManager.GetComponent<FightManager>().EnemyHealth -= 30 * GameManagerOBJ.GetComponent<GameManager>().Demons;
-            FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
-        }
-        else
-        {
-            FightManager.GetComponent<FightManager>().EnemyHealth -= 20 * GameManagerOBJ.GetComponent<GameManager>().Demons;
-            FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
+            if (crit <= critChance)
+            {
+                FightManager.GetComponent<FightManager>().EnemyHealth -= 30 * Random.Range(10, (GameManagerOBJ.GetComponent<GameManager>().Demons / 4));
+                FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
+            }
+            else
+            {
+                FightManager.GetComponent<FightManager>().EnemyHealth -= 20 * Random.Range(10, (GameManagerOBJ.GetComponent<GameManager>().Demons / 4));
+                FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
+            }
         }
     }
     void Pride() 
     {
-        Debug.Log("Pride Move");
-        crit = Random.value;
+        if (FightManager.GetComponent<FightManager>().IsPlayersTurn == true)
+        {
+            Debug.Log("Pride Move");
+            crit = Random.value;
 
-        if (crit <= critChance)
-        {
-            FightManager.GetComponent<FightManager>().EnemyHealth -= 30 * GameManagerOBJ.GetComponent<GameManager>().Demons;
-            FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
-        }
-        else
-        {
-            FightManager.GetComponent<FightManager>().EnemyHealth -= 20 * GameManagerOBJ.GetComponent<GameManager>().Demons;
-            FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
+            if (crit <= critChance)
+            {
+                FightManager.GetComponent<FightManager>().EnemyHealth -= 30 * Random.Range(10, (GameManagerOBJ.GetComponent<GameManager>().Demons / 4));
+                FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
+            }
+            else
+            {
+                FightManager.GetComponent<FightManager>().EnemyHealth -= 20 * Random.Range(10, (GameManagerOBJ.GetComponent<GameManager>().Demons / 4));
+                FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
+            }
         }
     }
     void Envy() 
     {
-        Debug.Log("Envy Move");
-        crit = Random.value;
+        if (FightManager.GetComponent<FightManager>().IsPlayersTurn == true)
+        {
+            Debug.Log("Envy Move");
+            crit = Random.value;
 
-        if (crit <= critChance)
-        {
-            FightManager.GetComponent<FightManager>().EnemyHealth -= 30 * GameManagerOBJ.GetComponent<GameManager>().Demons;
-            FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
-        }
-        else
-        {
-            FightManager.GetComponent<FightManager>().EnemyHealth -= 20 * GameManagerOBJ.GetComponent<GameManager>().Demons;
-            FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
+            if (crit <= critChance)
+            {
+                FightManager.GetComponent<FightManager>().EnemyHealth -= 30 * Random.Range(10, (GameManagerOBJ.GetComponent<GameManager>().Demons / 4));
+                FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
+            }
+            else
+            {
+                FightManager.GetComponent<FightManager>().EnemyHealth -= 20 * Random.Range(10, (GameManagerOBJ.GetComponent<GameManager>().Demons / 4));
+                FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
+            }
         }
     }
     void Anger()
     {
-        Debug.Log("Anger Move");
-        crit = Random.value;
+        if (FightManager.GetComponent<FightManager>().IsPlayersTurn == true)
+        {
+            Debug.Log("Anger Move");
+            crit = Random.value;
 
-        if (crit <= critChance)
-        {
-            FightManager.GetComponent<FightManager>().EnemyHealth -= 30 * GameManagerOBJ.GetComponent<GameManager>().Demons;
-            FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
-        }
-        else
-        {
-            FightManager.GetComponent<FightManager>().EnemyHealth -= 20 * GameManagerOBJ.GetComponent<GameManager>().Demons;
-            FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
+            if (crit <= critChance)
+            {
+                FightManager.GetComponent<FightManager>().EnemyHealth -= 30 * Random.Range(10, (GameManagerOBJ.GetComponent<GameManager>().Demons / 4));
+                FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
+            }
+            else
+            {
+                FightManager.GetComponent<FightManager>().EnemyHealth -= 20 * Random.Range(10, (GameManagerOBJ.GetComponent<GameManager>().Demons / 4));
+                FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
+            }
         }
     }
     void Greed() 
     {
-        Debug.Log("Greed Move");
-        crit = Random.value;
+        if (FightManager.GetComponent<FightManager>().IsPlayersTurn == true)
+        {
+            Debug.Log("Greed Move");
+            crit = Random.value;
 
-        if (crit <= critChance)
-        {
-            FightManager.GetComponent<FightManager>().EnemyHealth -= 30 * GameManagerOBJ.GetComponent<GameManager>().Demons;
-            FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
-        }
-        else
-        {
-            FightManager.GetComponent<FightManager>().EnemyHealth -= 20 * GameManagerOBJ.GetComponent<GameManager>().Demons;
-            FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
+            if (crit <= critChance)
+            {
+                FightManager.GetComponent<FightManager>().EnemyHealth -= 30 * Random.Range(10, (GameManagerOBJ.GetComponent<GameManager>().Demons / 4));
+                FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
+            }
+            else
+            {
+                FightManager.GetComponent<FightManager>().EnemyHealth -= 20 * Random.Range(10, (GameManagerOBJ.GetComponent<GameManager>().Demons / 4));
+                FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
+            }
         }
     }
 

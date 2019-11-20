@@ -20,12 +20,14 @@ public class EventRandomizer : MonoBehaviour
     public GameObject GameManagerOBJ;
     public Canvas TopDownCan;
     public GameObject HealthSliderOBJ;
+    public bool NewFight;
     #endregion
 
 
     // Start is called before the first frame update
     public void Start()
     {
+        NewFight = false;
         CountdownOn = false;
         Countdown = TimeInEncounter;
         EncounterCan.enabled = false;
@@ -65,6 +67,7 @@ public class EventRandomizer : MonoBehaviour
         
         if (Random.value <= PercentageChance)
         {
+            NewFight = true;
             Enemy = Instantiate(StandardEnemy, EnemySpawnLocation, Quaternion.identity);
             HealthSliderOBJ.GetComponent<EnemyHealthSlider>().NewEnemy = true;
             GameManagerOBJ.GetComponent<GameManager>().CountdownEnabled = false;

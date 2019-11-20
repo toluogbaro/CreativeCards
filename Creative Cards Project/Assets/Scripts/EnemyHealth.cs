@@ -11,6 +11,7 @@ public class EnemyHealth : MonoBehaviour
     public GameObject FightManager;
     public GameObject GameManager;
     // Start is called before the first frame update
+
     void Start()
     {
         FightManager = GameObject.FindGameObjectWithTag("FM");
@@ -20,17 +21,17 @@ public class EnemyHealth : MonoBehaviour
 
         if (EnemyDifficulty <= 0.5f) 
         {
-           FightManager.GetComponent<FightManager>().EnemyHealth = 20 * GameManager.GetComponent<GameManager>().Demons;
+           FightManager.GetComponent<FightManager>().EnemyHealth = 20 * (Random.Range(10 , (GameManager.GetComponent<GameManager>().Demons / 2)));
         }
 
         if (EnemyDifficulty > 0.5f && EnemyDifficulty <= 0.8f) 
         {
-            FightManager.GetComponent<FightManager>().EnemyHealth = 25 * GameManager.GetComponent<GameManager>().Demons;
+            FightManager.GetComponent<FightManager>().EnemyHealth = 25 * (Random.Range(10, (GameManager.GetComponent<GameManager>().Demons / 2)));
         }
 
         if (EnemyDifficulty > 0.8f) 
         {
-            FightManager.GetComponent<FightManager>().EnemyHealth = 30 * GameManager.GetComponent<GameManager>().Demons;
+            FightManager.GetComponent<FightManager>().EnemyHealth = 30 * (Random.Range(10, (GameManager.GetComponent<GameManager>().Demons / 2)));
         }
     }
 
