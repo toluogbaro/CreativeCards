@@ -11,7 +11,7 @@ public class MoveAssignment : MonoBehaviour
     public float crit;
     public float critChance;
     bool Move1Picked, Move2Picked, Move3Picked, Move4Picked, Move5Picked, Move6Picked, Move7Picked;
-
+    public int LustCounter;
     public int MoveNum;
 
     public GameObject FightManager;
@@ -34,6 +34,7 @@ public class MoveAssignment : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        LustCounter = 1;
     }
 
     // Update is called once per frame
@@ -65,19 +66,21 @@ public class MoveAssignment : MonoBehaviour
         if (FightManager.GetComponent<FightManager>().IsPlayersTurn == true)
         {
             Debug.Log("Lust Move");
-
+            
             crit = Random.value;
 
             if (crit <= critChance)
             {
-                FightManager.GetComponent<FightManager>().EnemyHealth -= 30 * Random.Range(10, (GameManagerOBJ.GetComponent<GameManager>().Demons / 4));
+                FightManager.GetComponent<FightManager>().EnemyHealth -= 20 * Random.Range(10, (GameManagerOBJ.GetComponent<GameManager>().Demons / 4) * (LustCounter/4));
                 FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
             }
             else
             {
-                FightManager.GetComponent<FightManager>().EnemyHealth -= 20 * Random.Range(10, (GameManagerOBJ.GetComponent<GameManager>().Demons / 4));
+                FightManager.GetComponent<FightManager>().EnemyHealth -= 10 * Random.Range(10, (GameManagerOBJ.GetComponent<GameManager>().Demons / 4) * (LustCounter/4));
                 FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
             }
+
+            LustCounter += 1;
         }
     }
     void Sloth() 
@@ -167,11 +170,13 @@ public class MoveAssignment : MonoBehaviour
             {
                 FightManager.GetComponent<FightManager>().EnemyHealth -= 30 * Random.Range(10, (GameManagerOBJ.GetComponent<GameManager>().Demons / 4));
                 FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
+                GameManagerOBJ.GetComponent<GameManager>().Demons += (FightManager.GetComponent<FightManager>().EnemyHealth / 15);
             }
             else
             {
                 FightManager.GetComponent<FightManager>().EnemyHealth -= 20 * Random.Range(10, (GameManagerOBJ.GetComponent<GameManager>().Demons / 4));
                 FightManager.GetComponent<FightManager>().IsPlayersTurn = false;
+                GameManagerOBJ.GetComponent<GameManager>().Demons += (FightManager.GetComponent<FightManager>().EnemyHealth / 10);
             }
         }
     }

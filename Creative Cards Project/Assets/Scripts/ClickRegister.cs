@@ -14,6 +14,7 @@ public class ClickRegister : MonoBehaviour
     public int DemonsUsedToTakeTile;
     public bool FirstHit;
     public GameObject EncounterPanelOBJ;
+    public GameObject CamRigOBJ;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,48 +52,120 @@ public class ClickRegister : MonoBehaviour
                         }
                     }
                     #region SinHexs
-                    if (hit.collider.gameObject.tag == "Glutony") 
+                    if (FirstHit == false && hit.collider.gameObject.tag == "Glutony")
                     {
                         hit.collider.gameObject.GetComponent<GlutonyMoveAdd>().AddGlutonyAttack();
                         hit.collider.gameObject.GetComponent<HexIsTouched>().IsTainted = true;
                         hit.collider.gameObject.GetComponent<Renderer>().material = Tainted;
+                        CamRigOBJ.GetComponent<EventRandomizer>().Glutony();
                     }
-                    if (hit.collider.gameObject.tag == "Lust")
+                    if (FirstHit == false && hit.collider.gameObject.tag == "Lust")
                     {
                         hit.collider.gameObject.GetComponent<LustMoveAdd>().AddLustAttack();
                         hit.collider.gameObject.GetComponent<HexIsTouched>().IsTainted = true;
                         hit.collider.gameObject.GetComponent<Renderer>().material = Tainted;
+                        CamRigOBJ.GetComponent<EventRandomizer>().LustFight();
                     }
-                    if (hit.collider.gameObject.tag == "Sloth")
+                    if (FirstHit == false && hit.collider.gameObject.tag == "Sloth")
                     {
                         hit.collider.gameObject.GetComponent<SlothMoveAdd>().AddSlothAttack();
                         hit.collider.gameObject.GetComponent<HexIsTouched>().IsTainted = true;
                         hit.collider.gameObject.GetComponent<Renderer>().material = Tainted;
+                        CamRigOBJ.GetComponent<EventRandomizer>().Sloth();
                     }
-                    if (hit.collider.gameObject.tag == "Pride")
+                    if (FirstHit == false && hit.collider.gameObject.tag == "Pride")
                     {
                         hit.collider.gameObject.GetComponent<PrideMoveAdd>().AddPrideAttack();
                         hit.collider.gameObject.GetComponent<HexIsTouched>().IsTainted = true;
                         hit.collider.gameObject.GetComponent<Renderer>().material = Tainted;
+                        CamRigOBJ.GetComponent<EventRandomizer>().Pride();
                     }
-                    if (hit.collider.gameObject.tag == "Envy")
+                    if (FirstHit == false && hit.collider.gameObject.tag == "Envy")
                     {
                         hit.collider.gameObject.GetComponent<EnvyMoveAdd>().AddEnvyAttack();
                         hit.collider.gameObject.GetComponent<HexIsTouched>().IsTainted = true;
                         hit.collider.gameObject.GetComponent<Renderer>().material = Tainted;
+                        CamRigOBJ.GetComponent<EventRandomizer>().Envy();
                     }
-                    if (hit.collider.gameObject.tag == "Anger")
+                    if (FirstHit == false && hit.collider.gameObject.tag == "Anger")
                     {
                         hit.collider.gameObject.GetComponent<AngerMoveAdd>().AddAngerAttack();
                         hit.collider.gameObject.GetComponent<HexIsTouched>().IsTainted = true;
                         hit.collider.gameObject.GetComponent<Renderer>().material = Tainted;
+                        CamRigOBJ.GetComponent<EventRandomizer>().Anger();
                     }
-                    if (hit.collider.gameObject.tag == "Greed")
+                    if (FirstHit == false && hit.collider.gameObject.tag == "Greed")
                     {
                         hit.collider.gameObject.GetComponent<GreedMoveAdd>().AddGreedAttack();
                         hit.collider.gameObject.GetComponent<HexIsTouched>().IsTainted = true;
                         hit.collider.gameObject.GetComponent<Renderer>().material = Tainted;
+                        CamRigOBJ.GetComponent<EventRandomizer>().Greed();
                     }
+
+
+
+
+
+
+
+
+
+                    if (FirstHit == true && hit.collider.gameObject.tag == "Glutony")
+                    {
+                        hit.collider.gameObject.GetComponent<GlutonyMoveAdd>().AddGlutonyAttack();
+                        hit.collider.gameObject.GetComponent<HexIsTouched>().IsTainted = true;
+                        hit.collider.gameObject.GetComponent<Renderer>().material = Tainted;
+                        FirstHit = false;
+                    }
+                    if (FirstHit == true && hit.collider.gameObject.tag == "Lust")
+                    {
+                        hit.collider.gameObject.GetComponent<LustMoveAdd>().AddLustAttack();
+                        hit.collider.gameObject.GetComponent<HexIsTouched>().IsTainted = true;
+                        hit.collider.gameObject.GetComponent<Renderer>().material = Tainted;
+                        CamRigOBJ.GetComponent<EventRandomizer>().LustFight();
+                        FirstHit = false;
+                    }
+                    if (FirstHit == true && hit.collider.gameObject.tag == "Sloth")
+                    {
+                        hit.collider.gameObject.GetComponent<SlothMoveAdd>().AddSlothAttack();
+                        hit.collider.gameObject.GetComponent<HexIsTouched>().IsTainted = true;
+                        hit.collider.gameObject.GetComponent<Renderer>().material = Tainted;
+                        CamRigOBJ.GetComponent<EventRandomizer>().Sloth();
+                        FirstHit = false;
+                    }
+                    if (FirstHit == true && hit.collider.gameObject.tag == "Pride")
+                    {
+                        hit.collider.gameObject.GetComponent<PrideMoveAdd>().AddPrideAttack();
+                        hit.collider.gameObject.GetComponent<HexIsTouched>().IsTainted = true;
+                        hit.collider.gameObject.GetComponent<Renderer>().material = Tainted;
+                        CamRigOBJ.GetComponent<EventRandomizer>().Pride();
+                        FirstHit = false;
+                    }
+                    if (FirstHit == true && hit.collider.gameObject.tag == "Envy")
+                    {
+                        hit.collider.gameObject.GetComponent<EnvyMoveAdd>().AddEnvyAttack();
+                        hit.collider.gameObject.GetComponent<HexIsTouched>().IsTainted = true;
+                        hit.collider.gameObject.GetComponent<Renderer>().material = Tainted;
+                        CamRigOBJ.GetComponent<EventRandomizer>().Envy();
+                        FirstHit = false;
+                    }
+                    if (FirstHit == true && hit.collider.gameObject.tag == "Anger")
+                    {
+                        hit.collider.gameObject.GetComponent<AngerMoveAdd>().AddAngerAttack();
+                        hit.collider.gameObject.GetComponent<HexIsTouched>().IsTainted = true;
+                        hit.collider.gameObject.GetComponent<Renderer>().material = Tainted;
+                        CamRigOBJ.GetComponent<EventRandomizer>().Anger();
+                        FirstHit = false;
+                    }
+                    if (FirstHit == true && hit.collider.gameObject.tag == "Greed")
+                    {
+                        hit.collider.gameObject.GetComponent<GreedMoveAdd>().AddGreedAttack();
+                        hit.collider.gameObject.GetComponent<HexIsTouched>().IsTainted = true;
+                        hit.collider.gameObject.GetComponent<Renderer>().material = Tainted;
+                        CamRigOBJ.GetComponent<EventRandomizer>().Greed();
+                        FirstHit = false;
+                    }
+
                     #endregion
                 }
             }
